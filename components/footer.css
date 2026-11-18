@@ -1,0 +1,145 @@
+/* components/footer.css
+   Scoped to .footer-vip — global tokens elsewhere are untouched.
+   Shares the house palette and type; safe alongside every section sheet.
+   Fonts load via @import for drop-in use; promote to next/font in
+   app/layout.tsx for zero layout shift if preferred. */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:ital,wght@0,300;0,400;0,500;1,300&display=swap");
+
+:root {
+  --hv-ink: #060606;
+  --hv-coal: #0b0a08;
+  --hv-ivory: #f5f3ee;
+  --hv-gold: #d4af78;
+  --hv-gold-hi: #ead7ab;
+  --hv-gold-lo: #a97f45;
+  --hv-night: #2b4066;
+  --hv-jade: #8fbf8a;
+  --ft-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Page chrome, identical to the other section sheets (idempotent) */
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 175, 120, 0.45) #0a0908;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0908;
+  border-left: 1px solid rgba(212, 175, 120, 0.08);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(212, 175, 120, 0.55), rgba(169, 127, 69, 0.55));
+  border: 2px solid #0a0908;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(234, 215, 171, 0.8), rgba(212, 175, 120, 0.8));
+}
+::selection {
+  background: #d4af78;
+  color: #0b0a08;
+}
+
+/* ── Scope: the journey ends in the void, one candle lit ───────── */
+.footer-vip {
+  font-family: "Jost", ui-sans-serif, system-ui, sans-serif;
+  background: linear-gradient(180deg, #070503 0%, #030303 45%, #020202 100%);
+}
+.footer-vip a {
+  -webkit-tap-highlight-color: transparent;
+}
+.footer-vip :focus-visible {
+  outline: 1px solid #d4af78;
+}
+.footer-vip a:focus-visible,
+.footer-vip button:focus-visible {
+  outline-offset: 4px;
+}
+.ft-serif {
+  font-family: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+}
+.ft-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* ── Watermark: the founding year, bookending the hero ─────────── */
+.ft-ghost {
+  font-size: clamp(8rem, 20vw, 18rem);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: rgba(212, 175, 120, 0.02);
+  -webkit-text-stroke: 1px rgba(212, 175, 120, 0.07);
+}
+
+/* ── Atmosphere ────────────────────────────────────────────────── */
+.ft-glow-a {
+  background: radial-gradient(circle at 50% 50%, rgba(212, 175, 120, 0.08), transparent 65%);
+  animation: ft-glow-a 30s ease-in-out infinite alternate;
+}
+.ft-glow-b {
+  background: radial-gradient(circle at 50% 50%, rgba(43, 64, 102, 0.12), transparent 65%);
+  animation: ft-glow-b 38s ease-in-out infinite alternate;
+}
+.ft-halo {
+  background: radial-gradient(50% 50% at 50% 50%, rgba(212, 175, 120, 0.09), transparent 70%);
+  animation: ft-halo 7s ease-in-out infinite alternate;
+}
+.ft-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  animation: ft-grain 9s steps(10) infinite;
+}
+
+/* ── Concierge presence ────────────────────────────────────────── */
+.ft-pulse {
+  animation: ft-pulse 2.6s ease-out infinite;
+}
+
+/* ── Keyframes ─────────────────────────────────────────────────── */
+@keyframes ft-glow-a {
+  from { transform: translateX(-50%) scale(1); }
+  to { transform: translateX(-50%) scale(1.12); }
+}
+@keyframes ft-glow-b {
+  from { transform: translate3d(2%, 2%, 0) scale(1.08); }
+  to { transform: translate3d(-3%, -3%, 0) scale(1); }
+}
+@keyframes ft-halo {
+  from { opacity: 0.7; transform: translate(-50%, -50%) scale(0.96); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+}
+@keyframes ft-grain {
+  0%, 100% { background-position: 0 0; }
+  10% { background-position: -4% -6%; }
+  20% { background-position: 6% 3%; }
+  30% { background-position: -3% 7%; }
+  40% { background-position: 7% -4%; }
+  50% { background-position: -6% 2%; }
+  60% { background-position: 4% 6%; }
+  70% { background-position: -2% -7%; }
+  80% { background-position: 6% -2%; }
+  90% { background-position: -5% 5%; }
+}
+@keyframes ft-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(143, 191, 138, 0.45); }
+  70% { box-shadow: 0 0 0 9px rgba(143, 191, 138, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(143, 191, 138, 0); }
+}
+
+/* ── Reduced motion: the seal holds still ──────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .footer-vip *,
+  .footer-vip *::before,
+  .footer-vip *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

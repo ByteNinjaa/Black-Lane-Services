@@ -1,0 +1,286 @@
+/* components/faq.css
+   Scoped to .faq-vip — global tokens elsewhere are untouched.
+   Shares the hero/fleet/occasions/chauffeur palette and type; safe
+   alongside all of them. Fonts load via @import for drop-in use;
+   promote to next/font in app/layout.tsx for zero layout shift. */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:ital,wght@0,300;0,400;0,500;1,300&display=swap");
+
+:root {
+  --hv-ink: #060606;
+  --hv-coal: #0b0a08;
+  --hv-ivory: #f5f3ee;
+  --hv-gold: #d4af78;
+  --hv-gold-hi: #ead7ab;
+  --hv-gold-lo: #a97f45;
+  --hv-night: #2b4066;
+  --hv-jade: #8fbf8a;
+  --fq-amber: #e0a458;
+  --fq-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Page chrome, identical to the other section sheets (idempotent) */
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 175, 120, 0.45) #0a0908;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0908;
+  border-left: 1px solid rgba(212, 175, 120, 0.08);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(212, 175, 120, 0.55), rgba(169, 127, 69, 0.55));
+  border: 2px solid #0a0908;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(234, 215, 171, 0.8), rgba(212, 175, 120, 0.8));
+}
+::selection {
+  background: #d4af78;
+  color: #0b0a08;
+}
+
+/* ── Scope: steel night warming back to candlelight ────────────── */
+.faq-vip {
+  font-family: "Jost", ui-sans-serif, system-ui, sans-serif;
+  background: linear-gradient(180deg, #06080c 0%, #0a0908 55%, #0c0a06 100%);
+}
+.faq-vip a {
+  -webkit-tap-highlight-color: transparent;
+}
+.faq-vip :focus-visible {
+  outline: 1px solid #d4af78;
+}
+.faq-vip a:focus-visible {
+  outline-offset: 4px;
+}
+.fq-serif {
+  font-family: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+}
+
+/* Typography — the section's voice, guaranteed inside the scope */
+.faq-vip .t-display {
+  font-family: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+.faq-vip .t-display-lg {
+  font-size: clamp(2.75rem, 5.5vw, 5.25rem);
+  line-height: 1.02;
+}
+.faq-vip .t-display-sm {
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  line-height: 1.1;
+}
+.fq-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* ── Gilded italic ─────────────────────────────────────────────── */
+.fq-gold-text {
+  background: linear-gradient(100deg, #f0ddb2 0%, #d4af78 38%, #a97f45 62%, #e8cf9e 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: fq-sheen 8s ease-in-out infinite alternate;
+}
+
+/* ── Watermark: the house virtue ───────────────────────────────── */
+.fq-ghost {
+  font-size: clamp(5rem, 10vw, 9rem);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: rgba(212, 175, 120, 0.03);
+  -webkit-text-stroke: 1px rgba(212, 175, 120, 0.12);
+}
+
+/* ── Atmosphere ────────────────────────────────────────────────── */
+.fq-glow-a {
+  background: radial-gradient(circle at 50% 50%, rgba(212, 175, 120, 0.1), transparent 65%);
+  animation: fq-glow-a 28s ease-in-out infinite alternate;
+}
+.fq-glow-b {
+  background: radial-gradient(circle at 50% 50%, rgba(224, 164, 88, 0.08), transparent 65%);
+  animation: fq-glow-b 36s ease-in-out infinite alternate;
+}
+.fq-bandglow-a {
+  background: radial-gradient(50% 45% at 80% 20%, rgba(224, 164, 88, 0.12), transparent 70%);
+  animation: fq-bandglow-a 30s ease-in-out infinite alternate;
+}
+.fq-bandglow-b {
+  background: radial-gradient(55% 45% at 15% 90%, rgba(212, 175, 120, 0.1), transparent 70%);
+  animation: fq-bandglow-b 36s ease-in-out infinite alternate;
+}
+.fq-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  animation: fq-grain 9s steps(10) infinite;
+}
+
+/* ── Photograph slow burn ──────────────────────────────────────── */
+.fq-drift {
+  transform-origin: 52% 30%;
+  animation: fq-drift 24s ease-in-out infinite alternate;
+}
+
+/* ── Q&A plates: answers in the open, plates that answer the cursor ── */
+.fq-card {
+  transition: border-color 0.7s var(--fq-ease);
+}
+.fq-card::before {
+  content: "";
+  position: absolute;
+  inset: -0.5rem -1rem;
+  background: radial-gradient(60% 80% at 50% 100%, rgba(212, 175, 120, 0.07), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  pointer-events: none;
+}
+.fq-card:hover {
+  border-color: #d4af78;
+}
+.fq-card:hover::before {
+  opacity: 1;
+}
+.fq-card-line {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, #d4af78, rgba(212, 175, 120, 0.2));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s var(--fq-ease);
+}
+.fq-card:hover .fq-card-line {
+  transform: scaleX(1);
+}
+.fq-card-ghost {
+  position: absolute;
+  top: -1rem;
+  right: 0;
+  font-size: 4.25rem;
+  font-weight: 300;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(212, 175, 120, 0.16);
+  opacity: 0.35;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.6s ease, transform 0.7s var(--fq-ease);
+}
+.fq-card:hover .fq-card-ghost {
+  opacity: 0.9;
+  transform: translateY(-3px);
+}
+.fq-card-num {
+  color: rgba(212, 175, 120, 0.5);
+  transition: color 0.6s ease;
+}
+.fq-card:hover .fq-card-num {
+  color: #d4af78;
+}
+.fq-card-diamond {
+  opacity: 0;
+  transform: rotate(45deg) scale(0);
+  transition: opacity 0.5s ease, transform 0.5s var(--fq-ease);
+}
+.fq-card:hover .fq-card-diamond {
+  opacity: 1;
+  transform: rotate(45deg) scale(1);
+  transition-delay: 0.15s;
+}
+
+/* ── Particulars jumps + concierge CTA: hairlines that draw ────── */
+.fq-jump,
+.fq-cta {
+  position: relative;
+}
+.fq-jump::after,
+.fq-cta::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, #d4af78, rgba(212, 175, 120, 0.2));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s var(--fq-ease);
+}
+.fq-jump:hover::after,
+.fq-jump:focus-visible::after,
+.fq-cta:hover::after,
+.fq-cta:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* ── Concierge presence ────────────────────────────────────────── */
+.fq-pulse {
+  animation: fq-pulse 2.6s ease-out infinite;
+}
+
+/* ── Keyframes ─────────────────────────────────────────────────── */
+@keyframes fq-sheen {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+@keyframes fq-glow-a {
+  from { transform: translate3d(2%, -2%, 0) scale(1); }
+  to { transform: translate3d(-4%, 4%, 0) scale(1.14); }
+}
+@keyframes fq-glow-b {
+  from { transform: translate3d(-2%, 3%, 0) scale(1.08); }
+  to { transform: translate3d(4%, -4%, 0) scale(1); }
+}
+@keyframes fq-bandglow-a {
+  from { transform: translate3d(1.5%, -1%, 0) scale(1); }
+  to { transform: translate3d(-2%, 2%, 0) scale(1.08); }
+}
+@keyframes fq-bandglow-b {
+  from { transform: translate3d(-1.5%, 1.5%, 0) scale(1.06); }
+  to { transform: translate3d(2%, -1.5%, 0) scale(1); }
+}
+@keyframes fq-grain {
+  0%, 100% { background-position: 0 0; }
+  10% { background-position: -4% -6%; }
+  20% { background-position: 6% 3%; }
+  30% { background-position: -3% 7%; }
+  40% { background-position: 7% -4%; }
+  50% { background-position: -6% 2%; }
+  60% { background-position: 4% 6%; }
+  70% { background-position: -2% -7%; }
+  80% { background-position: 6% -2%; }
+  90% { background-position: -5% 5%; }
+}
+@keyframes fq-drift {
+  from { transform: scale(1.04); }
+  to { transform: scale(1.11) translate3d(-1%, 1%, 0); }
+}
+@keyframes fq-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(143, 191, 138, 0.45); }
+  70% { box-shadow: 0 0 0 9px rgba(143, 191, 138, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(143, 191, 138, 0); }
+}
+
+/* ── Reduced motion: the fine print holds still ────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .faq-vip *,
+  .faq-vip *::before,
+  .faq-vip *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

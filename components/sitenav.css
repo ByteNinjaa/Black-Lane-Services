@@ -1,0 +1,183 @@
+/* components/sitenav.css
+   Scoped to .sitenav-vip (header) and .sitemenu-vip (salon overlay).
+   Shares the house palette and type; safe alongside every section sheet. */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:ital,wght@0,300;0,400;0,500;1,300&display=swap");
+
+:root {
+  --hv-ink: #060606;
+  --hv-coal: #0b0a08;
+  --hv-ivory: #f5f3ee;
+  --hv-gold: #d4af78;
+  --hv-gold-hi: #ead7ab;
+  --hv-gold-lo: #a97f45;
+  --hv-night: #2b4066;
+  --hv-jade: #8fbf8a;
+  --sn-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Page chrome, identical to the other section sheets (idempotent) */
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 175, 120, 0.45) #0a0908;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0908;
+  border-left: 1px solid rgba(212, 175, 120, 0.08);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(212, 175, 120, 0.55), rgba(169, 127, 69, 0.55));
+  border: 2px solid #0a0908;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(234, 215, 171, 0.8), rgba(212, 175, 120, 0.8));
+}
+::selection {
+  background: #d4af78;
+  color: #0b0a08;
+}
+
+/* ── Scopes ────────────────────────────────────────────────────── */
+.sitenav-vip,
+.sitemenu-vip {
+  font-family: "Jost", ui-sans-serif, system-ui, sans-serif;
+}
+.sitemenu-vip {
+  background: linear-gradient(160deg, #060606 0%, #0a0807 55%, #0c0a06 100%);
+}
+.sitenav-vip a,
+.sitemenu-vip a {
+  -webkit-tap-highlight-color: transparent;
+}
+.sitenav-vip :focus-visible,
+.sitemenu-vip :focus-visible {
+  outline: 1px solid #d4af78;
+}
+.sitenav-vip a:focus-visible,
+.sitenav-vip button:focus-visible,
+.sitemenu-vip a:focus-visible,
+.sitemenu-vip button:focus-visible {
+  outline-offset: 4px;
+}
+.sn-serif {
+  font-family: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+}
+.sn-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+/* ── The crest's Reserve button: flat color transition only ────── */
+.sitenav-vip .btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: "Jost", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.sitenav-vip .btn-primary {
+  color: #0b0a08;
+  background: #d4af78;
+  box-shadow:
+    0 0 0 1px rgba(212, 175, 120, 0.4),
+    0 12px 30px -14px rgba(212, 175, 120, 0.45);
+}
+.sitenav-vip .btn-primary:hover {
+  background: #ead7ab;
+  transform: none; /* explicitly prevents any rising motion */
+}
+
+/* ── Salon watermark + atmosphere ──────────────────────────────── */
+.sn-ghost {
+  font-size: clamp(6rem, 18vw, 16rem);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: rgba(212, 175, 120, 0.02);
+  -webkit-text-stroke: 1px rgba(212, 175, 120, 0.08);
+  animation: sn-ghost 24s ease-in-out infinite alternate;
+}
+.sn-glow-a {
+  background: radial-gradient(circle at 50% 50%, rgba(212, 175, 120, 0.1), transparent 65%);
+  animation: sn-glow-a 28s ease-in-out infinite alternate;
+}
+.sn-glow-b {
+  background: radial-gradient(circle at 50% 50%, rgba(90, 31, 43, 0.2), transparent 65%);
+  animation: sn-glow-b 36s ease-in-out infinite alternate;
+}
+.sn-halo {
+  background: radial-gradient(50% 50% at 50% 50%, rgba(212, 175, 120, 0.07), transparent 70%);
+  animation: sn-halo 8s ease-in-out infinite alternate;
+}
+.sn-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  animation: sn-grain 9s steps(10) infinite;
+}
+
+/* ── Concierge presence ────────────────────────────────────────── */
+.sn-pulse {
+  animation: sn-pulse 2.6s ease-out infinite;
+}
+
+/* ── Keyframes ─────────────────────────────────────────────────── */
+@keyframes sn-ghost {
+  from { transform: translateY(-50%) translateX(0); }
+  to { transform: translateY(-50%) translateX(-2.5%); }
+}
+@keyframes sn-glow-a {
+  from { transform: translate3d(-2%, -2%, 0) scale(1); }
+  to { transform: translate3d(4%, 4%, 0) scale(1.14); }
+}
+@keyframes sn-glow-b {
+  from { transform: translate3d(2%, 3%, 0) scale(1.08); }
+  to { transform: translate3d(-4%, -4%, 0) scale(1); }
+}
+@keyframes sn-halo {
+  from { opacity: 0.7; transform: translate(-50%, -50%) scale(0.96); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+}
+@keyframes sn-grain {
+  0%, 100% { background-position: 0 0; }
+  10% { background-position: -4% -6%; }
+  20% { background-position: 6% 3%; }
+  30% { background-position: -3% 7%; }
+  40% { background-position: 7% -4%; }
+  50% { background-position: -6% 2%; }
+  60% { background-position: 4% 6%; }
+  70% { background-position: -2% -7%; }
+  80% { background-position: 6% -2%; }
+  90% { background-position: -5% 5%; }
+}
+@keyframes sn-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(143, 191, 138, 0.45); }
+  70% { box-shadow: 0 0 0 9px rgba(143, 191, 138, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(143, 191, 138, 0); }
+}
+
+/* ── Reduced motion: the crest and the salon hold still ────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .sitenav-vip *,
+  .sitenav-vip *::before,
+  .sitenav-vip *::after,
+  .sitemenu-vip *,
+  .sitemenu-vip *::before,
+  .sitemenu-vip *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

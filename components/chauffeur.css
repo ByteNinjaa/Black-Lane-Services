@@ -1,0 +1,290 @@
+/* components/chauffeur.css
+   Scoped to .chauffeur-vip — global tokens elsewhere are untouched.
+   Shares the hero/fleet/occasions palette and type; safe alongside all.
+   Fonts load via @import for drop-in use; promote to next/font in
+   app/layout.tsx for zero layout shift if preferred. */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:ital,wght@0,300;0,400;0,500;1,300&display=swap");
+
+:root {
+  --hv-ink: #060606;
+  --hv-coal: #0b0a08;
+  --hv-ivory: #f5f3ee;
+  --hv-gold: #d4af78;
+  --hv-gold-hi: #ead7ab;
+  --hv-gold-lo: #a97f45;
+  --hv-night: #2b4066;
+  --hv-jade: #8fbf8a;
+  --ch-steel: #3f5a8a;
+  --ch-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Page chrome, identical to the other section sheets (idempotent) */
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 175, 120, 0.45) #0a0908;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0908;
+  border-left: 1px solid rgba(212, 175, 120, 0.08);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(212, 175, 120, 0.55), rgba(169, 127, 69, 0.55));
+  border: 2px solid #0a0908;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(234, 215, 171, 0.8), rgba(212, 175, 120, 0.8));
+}
+::selection {
+  background: #d4af78;
+  color: #0b0a08;
+}
+
+/* ── Scope: garnet night cooling into steel ────────────────────── */
+.chauffeur-vip {
+  font-family: "Jost", ui-sans-serif, system-ui, sans-serif;
+  background: linear-gradient(180deg, #120a0d 0%, #0a0c10 55%, #06080c 100%);
+}
+.chauffeur-vip a {
+  -webkit-tap-highlight-color: transparent;
+}
+.chauffeur-vip :focus-visible {
+  outline: 1px solid #d4af78;
+}
+.chauffeur-vip a:focus-visible {
+  outline-offset: 4px;
+}
+.ch-serif {
+  font-family: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+}
+
+/* Typography — the section's voice, guaranteed inside the scope */
+.chauffeur-vip .t-display {
+  font-family: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+.chauffeur-vip .t-display-xl {
+  font-size: clamp(2.9rem, 6vw, 6rem);
+  line-height: 1;
+}
+.chauffeur-vip .t-display-sm {
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  line-height: 1.1;
+}
+.ch-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* ── Gilded italic ─────────────────────────────────────────────── */
+.ch-gold-text {
+  background: linear-gradient(100deg, #f0ddb2 0%, #d4af78 38%, #a97f45 62%, #e8cf9e 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: ch-sheen 8s ease-in-out infinite alternate;
+}
+
+/* ── Watermark: the house virtue ───────────────────────────────── */
+.ch-ghost {
+  font-size: clamp(6rem, 13vw, 12rem);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: rgba(212, 175, 120, 0.03);
+  -webkit-text-stroke: 1px rgba(212, 175, 120, 0.12);
+}
+
+/* ── Photograph: slow burn + colour grade ──────────────────────── */
+.ch-drift {
+  transform-origin: 55% 40%;
+  animation: ch-drift 26s ease-in-out infinite alternate;
+}
+.ch-glow-a {
+  background: radial-gradient(55% 45% at 78% 18%, rgba(63, 90, 138, 0.16), transparent 70%);
+  animation: ch-glow-a 30s ease-in-out infinite alternate;
+}
+.ch-glow-b {
+  background: radial-gradient(50% 45% at 18% 88%, rgba(212, 175, 120, 0.12), transparent 70%);
+  animation: ch-glow-b 36s ease-in-out infinite alternate;
+}
+.ch-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  animation: ch-grain 9s steps(10) infinite;
+}
+
+/* ── Buttons: simplified and clean ────────────────────────────── */
+.chauffeur-vip .ch-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.9rem 2rem;
+  font-family: "Jost", ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.chauffeur-vip .ch-btn-primary {
+  color: #060606;
+  background-color: #d4af78;
+  border: 1px solid #d4af78;
+}
+
+.chauffeur-vip .ch-btn-primary:hover {
+  background-color: #e4c491;
+  border-color: #e4c491;
+}
+
+.chauffeur-vip .ch-btn-quiet {
+  color: rgba(245, 243, 238, 0.85);
+  background-color: transparent;
+  border: 1px solid rgba(212, 175, 120, 0.3);
+}
+
+.chauffeur-vip .ch-btn-quiet:hover {
+  color: #f5f3ee;
+  border-color: rgba(212, 175, 120, 0.7);
+  background-color: rgba(212, 175, 120, 0.05);
+}
+
+/* ── The three promises: plates that answer the cursor ─────────── */
+.ch-standard {
+  transition: border-color 0.7s var(--ch-ease);
+}
+.ch-standard::before {
+  content: "";
+  position: absolute;
+  inset: -0.5rem -1rem;
+  background: radial-gradient(60% 80% at 50% 100%, rgba(212, 175, 120, 0.07), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  pointer-events: none;
+}
+.ch-standard:hover {
+  border-color: #d4af78;
+}
+.ch-standard:hover::before {
+  opacity: 1;
+}
+.ch-standard-line {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, #d4af78, rgba(212, 175, 120, 0.2));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s var(--ch-ease);
+}
+.ch-standard:hover .ch-standard-line {
+  transform: scaleX(1);
+}
+.ch-standard-ghost {
+  position: absolute;
+  top: -1rem;
+  right: 0;
+  font-size: 4.25rem;
+  font-weight: 300;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(212, 175, 120, 0.16);
+  opacity: 0.4;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.6s ease, transform 0.7s var(--ch-ease);
+}
+.ch-standard:hover .ch-standard-ghost {
+  opacity: 0.9;
+  transform: translateY(-3px);
+}
+.ch-standard-num {
+  color: rgba(212, 175, 120, 0.5);
+  transition: color 0.6s ease;
+}
+.ch-standard:hover .ch-standard-num {
+  color: #d4af78;
+}
+.ch-standard-diamond {
+  opacity: 0;
+  transform: rotate(45deg) scale(0);
+  transition: opacity 0.5s ease, transform 0.5s var(--ch-ease);
+}
+.ch-standard:hover .ch-standard-diamond {
+  opacity: 1;
+  transform: rotate(45deg) scale(1);
+  transition-delay: 0.15s;
+}
+.ch-standard-inner {
+  transition: transform 0.6s var(--ch-ease);
+}
+.ch-standard:hover .ch-standard-inner {
+  transform: translateY(-3px);
+}
+
+/* ── Dispatch presence ─────────────────────────────────────────── */
+.ch-pulse {
+  animation: ch-pulse 2.6s ease-out infinite;
+}
+
+/* ── Keyframes ─────────────────────────────────────────────────── */
+@keyframes ch-sheen {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+@keyframes ch-drift {
+  from { transform: scale(1.05); }
+  to { transform: scale(1.13) translate3d(-1.2%, 1%, 0); }
+}
+@keyframes ch-glow-a {
+  from { transform: translate3d(1.5%, -1%, 0) scale(1); }
+  to { transform: translate3d(-2%, 2%, 0) scale(1.08); }
+}
+@keyframes ch-glow-b {
+  from { transform: translate3d(-1.5%, 1.5%, 0) scale(1.06); }
+  to { transform: translate3d(2%, -1.5%, 0) scale(1); }
+}
+@keyframes ch-grain {
+  0%, 100% { background-position: 0 0; }
+  10% { background-position: -4% -6%; }
+  20% { background-position: 6% 3%; }
+  30% { background-position: -3% 7%; }
+  40% { background-position: 7% -4%; }
+  50% { background-position: -6% 2%; }
+  60% { background-position: 4% 6%; }
+  70% { background-position: -2% -7%; }
+  80% { background-position: 6% -2%; }
+  90% { background-position: -5% 5%; }
+}
+@keyframes ch-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(143, 191, 138, 0.45); }
+  70% { box-shadow: 0 0 0 9px rgba(143, 191, 138, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(143, 191, 138, 0); }
+}
+
+/* ── Reduced motion: the night holds still ─────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .chauffeur-vip *,
+  .chauffeur-vip *::before,
+  .chauffeur-vip *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

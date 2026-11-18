@@ -1,48 +1,268 @@
+// components/Chauffeur.tsx
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "motion/react";
+import { ArrowRight } from "@phosphor-icons/react";
 import { Reveal } from "./Reveal";
+import "./chauffeur.css"; // App Router: import here. Pages Router: move this import to _app.tsx.
+
+const ease = [0.16, 1, 0.3, 1] as const;
 
 const standards = [
-  { title: "Licensed and vetted", body: "TLC-licensed and background-checked." },
-  { title: "Quiet by default", body: "Conversation only if you want it." },
-  { title: "The cabin, ready", body: "Ice, chargers and your temperature, set." },
+  { title: "Rigorously Vetted", body: "TLC-licensed, background-checked, and trained in executive protection and protocol." },
+  { title: "Absolute Discretion", body: "Complete confidentiality by default; conversation tailored entirely to your preference." },
+  { title: "Curated Sanctuary", body: "Your cabin prepared precisely to your liking—temperature, lighting, and amenities set before you open the door." },
 ];
+
+/* ── Live New York time — the dispatch desk never closes ─────────── */
+function useNyTime() {
+  const [time, setTime] = useState<string | null>(null);
+  useEffect(() => {
+    const fmt = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "America/New_York",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    });
+    const tick = () => setTime(fmt.format(new Date()));
+    tick();
+    const id = window.setInterval(tick, 1000);
+    return () => window.clearInterval(id);
+  }, []);
+  return time;
+}
 
 // Full-bleed cinematic photo with the heading and promises laid over its dark lower part.
 export function Chauffeur() {
+  const ref = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+  const time = useNyTime();
+
+  /* Scroll depth — the photograph sinks, the watermark rises */
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const yImage = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [reduce ? "0%" : "-4%", reduce ? "0%" : "4%"]
+  );
+
+  const draw = (delay: number, axis: "scaleX" | "scaleY") => ({
+    initial: reduce ? (false as const) : { [axis]: 0 },
+    whileInView: { [axis]: 1 },
+    viewport: { once: true, margin: "-10%" },
+    transition: { duration: 1.3, delay, ease },
+  });
+
+  const appear = (delay: number) => ({
+    initial: reduce ? (false as const) : { opacity: 0 },
+    whileInView: { opacity: 1 },
+    viewport: { once: true, margin: "-10%" },
+    transition: { duration: 1, delay, ease },
+  });
+
   return (
     <section
+      ref={ref}
+      id="chauffeur"
       aria-labelledby="chauffeur-title"
-      className="on-photo relative isolate flex min-h-[min(100dvh,56rem)] items-end overflow-hidden border-t border-hairline bg-canvas"
+      className="chauffeur-vip on-photo relative isolate flex min-h-[min(100dvh,56rem)] scroll-mt-20 items-end overflow-hidden border-t border-[#D4AF78]/20"
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/images/chauffeur-band.jpg"
-        alt="A chauffeur holding the rear door of a black limousine at night"
-        width={2400}
-        height={1350}
-        loading="lazy"
-        className="grade absolute inset-0 -z-10 h-full w-full object-cover"
-      />
+      {/* ── PHOTOGRAPH: parallax band, slow burn, night grade ───── */}
+      <motion.div style={{ y: yImage }} className="absolute inset-x-0 -inset-y-[6%] z-0">
+        <div className="ch-drift absolute inset-0">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/chauffeur-band.jpg"
+            alt="A chauffeur holding the rear door of a black limousine at night"
+            width={2400}
+            height={1350}
+            loading="lazy"
+            draggable={false}
+            className="grade absolute inset-0 h-full w-full object-cover"
+            style={{ filter: "brightness(0.62) contrast(1.1) saturate(0.85)" }}
+          />
+        </div>
+      </motion.div>
+
+      {/* Deep cinematic scrim */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgb(6_6_6/0.96)_0%,rgb(6_6_6/0.75)_32%,rgb(6_6_6/0.15)_65%,rgb(6_6_6/0.35)_100%)]"
+        className="absolute inset-0 z-[1]"
+        style={{
+          background:
+            "linear-gradient(to top, #060606 4%, rgba(6,6,6,0.82) 34%, rgba(6,6,6,0.25) 62%, rgba(6,6,6,0.45) 100%)",
+        }}
       />
 
-      <div className="wrap w-full pb-[clamp(3rem,7vh,5.5rem)] pt-40">
-        <Reveal>
-          <h2 id="chauffeur-title" className="t-display t-display-xl max-w-[14ch]">
-            The chauffeur makes the evening
-          </h2>
-        </Reveal>
+      {/* Colour grade: steel night above, candle gold below */}
+      <div aria-hidden="true" className="ch-glow-a absolute inset-0 z-[2] mix-blend-screen" />
+      <div aria-hidden="true" className="ch-glow-b absolute inset-0 z-[2] mix-blend-screen" />
 
-        <ul className="mt-12 grid gap-8 md:grid-cols-3 md:gap-10">
+      {/* ── THE MATTE: a gallery frame, drawn on arrival ────────── */}
+      <div
+        className="pointer-events-none absolute z-[5]"
+        style={{
+          top: "clamp(4.5rem,10vh,6rem)",
+          left: "clamp(1rem,3vw,2.5rem)",
+          right: "clamp(1rem,3vw,2.5rem)",
+          bottom: "clamp(1rem,3vw,2.5rem)",
+        }}
+      >
+        <motion.span
+          aria-hidden="true"
+          className="absolute left-0 top-0 h-px w-full origin-left bg-gradient-to-r from-transparent via-[#D4AF78]/55 to-[#D4AF78]/25"
+          {...draw(0.15, "scaleX")}
+        />
+        <motion.span
+          aria-hidden="true"
+          className="absolute right-0 top-0 h-full w-px origin-top bg-gradient-to-b from-[#D4AF78]/45 via-[#D4AF78]/15 to-transparent"
+          {...draw(0.3, "scaleY")}
+        />
+        <motion.span
+          aria-hidden="true"
+          className="absolute bottom-0 left-0 h-px w-full origin-right bg-gradient-to-l from-transparent via-[#D4AF78]/40 to-[#D4AF78]/20"
+          {...draw(0.45, "scaleX")}
+        />
+        <motion.span
+          aria-hidden="true"
+          className="absolute bottom-0 left-0 h-full w-px origin-bottom bg-gradient-to-t from-[#D4AF78]/35 to-transparent"
+          {...draw(0.6, "scaleY")}
+        />
+        <motion.span
+          aria-hidden="true"
+          className="absolute -left-px -top-px h-8 w-8 border-l border-t border-[#D4AF78]"
+          {...appear(0.9)}
+        />
+        <motion.span
+          aria-hidden="true"
+          className="absolute -bottom-px -right-px h-8 w-8 border-b border-r border-[#D4AF78]"
+          {...appear(0.9)}
+        />
+        <motion.span
+          aria-hidden="true"
+          className="absolute -right-[3px] -top-[3px] h-[7px] w-[7px] rotate-45 border border-[#D4AF78] bg-[#060606]"
+          {...appear(1.05)}
+        />
+      </div>
+
+      {/* ── CONTENT: laid over the dark lower part ──────────────── */}
+      <div className="wrap relative z-10 w-full pb-[clamp(4rem,8vh,6rem)] pt-40">
+        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-16">
+          <Reveal>
+            {/* Gold eyebrow */}
+            <div className="mb-6 flex items-center gap-4">
+              <span className="h-px w-12 bg-gradient-to-r from-[#D4AF78] to-[#D4AF78]/20" />
+              <span className="text-[0.72rem] uppercase tracking-[0.34em] text-[#D4AF78]">
+                The Private Chauffeur Standard
+              </span>
+            </div>
+
+            <h2
+              id="chauffeur-title"
+              className="t-display t-display-xl max-w-[14ch] text-[#F5F3EE]"
+            >
+              The <em className="ch-gold-text italic">chauffeur</em>
+              <br />
+              defines the evening.
+            </h2>
+          </Reveal>
+
+          <Reveal delay={0.12} className="lg:pb-1">
+            {/* The house maxim */}
+            <figure className="relative max-w-[28rem] border-l border-[#D4AF78]/25 pl-7">
+              <span
+                aria-hidden="true"
+                className="ch-serif absolute -left-3 -top-7 select-none text-[4.5rem] leading-none text-[#D4AF78]/30"
+              >
+                “
+              </span>
+              <blockquote className="ch-serif text-[1.45rem] font-light italic leading-[1.5] text-[#F5F3EE]/85">
+                True luxury is never rushed; it is felt in the quiet perfection of arrival.
+              </blockquote>
+              <figcaption className="ch-label mt-4 text-[#D4AF78]/70">
+                — The Executive Mandate
+              </figcaption>
+            </figure>
+
+            {/* The invitation */}
+            <div className="mt-9 flex flex-wrap items-center gap-6">
+              <a href="#reserve" className="ch-btn ch-btn-primary">
+                Reserve your experience
+              </a>
+              <a href="#fleet" className="ch-btn ch-btn-quiet group">
+                Explore the fleet
+                <ArrowRight
+                  size={14}
+                  aria-hidden="true"
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                />
+              </a>
+            </div>
+          </Reveal>
+        </div>
+
+        {/* ── THE THREE PROMISES: engraved plates ───────────────── */}
+        <ul className="mt-16 grid gap-10 md:grid-cols-3 md:gap-12">
           {standards.map((s, i) => (
-            <Reveal as="li" key={s.title} delay={0.1 + i * 0.08} className="border-t border-ink/25 pt-6">
-              <h3 className="t-display t-display-sm">{s.title}</h3>
-              <p className="mt-2 text-body">{s.body}</p>
+            <Reveal
+              as="li"
+              key={s.title}
+              delay={0.1 + i * 0.08}
+              className="ch-standard group relative border-t border-[#D4AF78]/30 pt-8"
+            >
+              <span aria-hidden="true" className="ch-standard-line" />
+              <span aria-hidden="true" className="ch-standard-ghost ch-serif">
+                0{i + 1}
+              </span>
+
+              <div className="ch-standard-inner relative">
+                <div className="flex items-center justify-between">
+                  <span className="ch-standard-num text-[0.65rem] uppercase tracking-[0.3em]">
+                    0{i + 1}
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className="ch-standard-diamond inline-block h-[5px] w-[5px] rotate-45 border border-[#D4AF78]"
+                  />
+                </div>
+
+                <h3 className="t-display t-display-sm mt-4 text-[#F5F3EE]">
+                  {s.title}
+                </h3>
+
+                <p className="text-body mt-3 text-[#F5F3EE]/70 transition-colors duration-700 group-hover:text-[#F5F3EE]/90">
+                  {s.body}
+                </p>
+              </div>
             </Reveal>
           ))}
         </ul>
       </div>
+
+      {/* ── FILM GRAIN ──────────────────────────────────────────── */}
+      <div
+        aria-hidden="true"
+        className="ch-grain pointer-events-none absolute inset-0 z-[60] opacity-[0.05] mix-blend-overlay"
+      />
     </section>
+  );
+}
+
+function Diamond({ className = "" }: { className?: string }) {
+  return (
+    <span
+      aria-hidden="true"
+      className={`inline-block h-[5px] w-[5px] rotate-45 border border-[#D4AF78]/60 ${className}`}
+    />
   );
 }

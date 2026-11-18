@@ -1,0 +1,175 @@
+/* components/occasions.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:ital,wght@0,300;0,400;0,500;1,300&display=swap");
+
+:root {
+  --hv-ink: #060606;
+  --hv-coal: #0b0a08;
+  --hv-ivory: #f5f3ee;
+  --hv-gold: #d4af78;
+  --hv-gold-hi: #ead7ab;
+  --hv-gold-lo: #a97f45;
+  --hv-night: #2b4066;
+  --hv-jade: #8fbf8a;
+  --oc-garnet: #5a1f2b;
+  --oc-rose: #c99a8e;
+  --oc-steel: #8fa6c4;
+  --oc-amber: #e0a458;
+  --oc-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 175, 120, 0.45) #0a0908;
+}
+
+.occasions-vip {
+  font-family: "Jost", ui-sans-serif, system-ui, sans-serif;
+  background: linear-gradient(180deg, #0a0c12 0%, #0b0908 48%, #120a0d 100%);
+}
+
+.occasions-vip .t-display {
+  font-family: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+
+.occasions-vip .t-display-lg {
+  font-size: clamp(2.75rem, 5.5vw, 5.25rem);
+  line-height: 1.02;
+}
+
+.occasions-vip .t-display-md {
+  font-size: clamp(1.8rem, 2.4vw, 2.25rem);
+  line-height: 1.08;
+}
+
+.occasions-vip .t-lead {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+
+.oc-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.oc-gold-text {
+  background: linear-gradient(100deg, #f0ddb2 0%, #d4af78 38%, #a97f45 62%, #e8cf9e 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: oc-sheen 8s ease-in-out infinite alternate;
+}
+
+.oc-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  animation: oc-grain 9s steps(10) infinite;
+}
+
+.oc-img {
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.78) contrast(1.08) saturate(0.9);
+  transition: filter 1s var(--oc-ease), transform 1.4s var(--oc-ease);
+}
+
+.oc-tile:hover .oc-img,
+.oc-tile:focus-within .oc-img {
+  filter: brightness(0.9) contrast(1.06) saturate(0.95);
+}
+
+/* Plate frame lines */
+.oc-line {
+  position: absolute;
+  transition: transform 0.5s var(--oc-ease);
+}
+.oc-line-t {
+  top: 0; left: 0; width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 120, 0.65) 30%, rgba(212, 175, 120, 0.3));
+  transform: scaleX(0); transform-origin: left;
+}
+.oc-line-r {
+  top: 0; right: 0; width: 1px; height: 100%;
+  background: linear-gradient(180deg, rgba(212, 175, 120, 0.55), rgba(212, 175, 120, 0.15));
+  transform: scaleY(0); transform-origin: top;
+}
+.oc-line-b {
+  bottom: 0; left: 0; width: 100%; height: 1px;
+  background: linear-gradient(270deg, transparent, rgba(212, 175, 120, 0.5) 30%, rgba(212, 175, 120, 0.25));
+  transform: scaleX(0); transform-origin: right;
+}
+.oc-line-l {
+  top: 0; left: 0; width: 1px; height: 100%;
+  background: linear-gradient(0deg, rgba(212, 175, 120, 0.45), transparent);
+  transform: scaleY(0); transform-origin: bottom;
+}
+
+.oc-tile:hover .oc-line-t, .oc-tile:focus-within .oc-line-t { transform: scaleX(1); transition-duration: 0.9s; transition-delay: 0.05s; }
+.oc-tile:hover .oc-line-r, .oc-tile:focus-within .oc-line-r { transform: scaleY(1); transition-duration: 0.9s; transition-delay: 0.18s; }
+.oc-tile:hover .oc-line-b, .oc-tile:focus-within .oc-line-b { transform: scaleX(1); transition-duration: 0.9s; transition-delay: 0.3s; }
+.oc-tile:hover .oc-line-l, .oc-tile:focus-within .oc-line-l { transform: scaleY(1); transition-duration: 0.9s; transition-delay: 0.42s; }
+
+.oc-corner {
+  position: absolute; width: 1.5rem; height: 1.5rem; opacity: 0; transition: opacity 0.4s ease;
+}
+.oc-corner-tl { top: -1px; left: -1px; border-top: 1px solid #d4af78; border-left: 1px solid #d4af78; }
+.oc-corner-br { bottom: -1px; right: -1px; border-bottom: 1px solid #d4af78; border-right: 1px solid #d4af78; }
+
+.oc-tile:hover .oc-corner, .oc-tile:focus-within .oc-corner { opacity: 1; transition-delay: 0.4s; }
+
+.oc-diamond {
+  position: absolute; top: -4px; right: -4px; width: 7px; height: 7px;
+  border: 1px solid #d4af78; background: #0b0908;
+  transform: rotate(45deg) scale(0); transition: transform 0.45s var(--oc-ease);
+}
+.oc-tile:hover .oc-diamond, .oc-tile:focus-within .oc-diamond {
+  transform: rotate(45deg) scale(1); transition-delay: 0.5s;
+}
+
+.oc-ghostnum {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(3.5rem, 5.5vw, 5rem);
+  font-weight: 300;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(212, 175, 120, 0.25);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.7s var(--oc-ease);
+}
+.oc-tile:hover .oc-ghostnum, .oc-tile:focus-within .oc-ghostnum {
+  opacity: 1; transform: none; transition-delay: 0.15s;
+}
+
+.oc-num { color: rgba(212, 175, 120, 0.5); transition: color 0.5s ease; }
+.oc-numline { background: rgba(212, 175, 120, 0.25); transition: background 0.5s ease; }
+.oc-tile:hover .oc-num, .oc-tile:focus-within .oc-num { color: #d4af78; }
+.oc-tile:hover .oc-numline, .oc-tile:focus-within .oc-numline { background: rgba(212, 175, 120, 0.6); }
+
+.oc-cta { position: relative; }
+.oc-cta::after {
+  content: ""; position: absolute; left: 0; bottom: 4px; width: 100%; height: 1px;
+  background: linear-gradient(90deg, #d4af78, rgba(212, 175, 120, 0.2));
+  transform: scaleX(0); transform-origin: left; transition: transform 0.5s var(--oc-ease);
+}
+.oc-cta:hover::after, .oc-cta:focus-visible::after { transform: scaleX(1); }
+
+@keyframes oc-sheen {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+@keyframes oc-grain {
+  0%, 100% { background-position: 0 0; }
+  50% { background-position: -5% 5%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .occasions-vip *, .occasions-vip *::before, .occasions-vip *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

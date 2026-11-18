@@ -1,0 +1,235 @@
+/* components/hero.css
+   Scoped to .hero-vip — the rest of the site's styles are untouched. */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:ital,wght@0,300;0,400;0,500;1,300&display=swap");
+
+:root {
+  --hv-ink: #060606;
+  --hv-coal: #0b0a08;
+  --hv-ivory: #f5f3ee;
+  --hv-gold: #d4af78;
+  --hv-gold-hi: #ead7ab;
+  --hv-gold-lo: #a97f45;
+  --hv-night: #2b4066;
+  --hv-jade: #8fbf8a;
+  --hv-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Page Scrollbar & Selection ────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 175, 120, 0.45) #0a0908;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0908;
+  border-left: 1px solid rgba(212, 175, 120, 0.08);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(212, 175, 120, 0.55), rgba(169, 127, 69, 0.55));
+  border: 2px solid #0a0908;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(234, 215, 171, 0.8), rgba(212, 175, 120, 0.8));
+}
+
+::selection {
+  background: #d4af78;
+  color: #0b0a08;
+}
+
+/* ── Scope & Typography ────────────────────────────────────────── */
+.hero-vip {
+  font-family: "Jost", ui-sans-serif, system-ui, sans-serif;
+  background: var(--hv-ink);
+}
+
+.hero-vip a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hero-vip a:focus-visible {
+  outline: 1px solid var(--hv-gold);
+  outline-offset: 4px;
+}
+
+.hero-serif {
+  font-family: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+}
+
+/* ── Buttons ───────────────────────────────────────────────────── */
+.hero-vip .btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1.05rem 2.35rem;
+  font-family: "Jost", ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 0px;
+  cursor: pointer;
+  transition:
+    transform 0.6s var(--hv-ease),
+    box-shadow 0.6s var(--hv-ease),
+    color 0.4s ease,
+    border-color 0.4s ease,
+    background-color 0.4s ease;
+}
+
+.hero-vip .btn-primary {
+  overflow: hidden;
+  color: #0b0a08;
+  background: linear-gradient(115deg, #ead7ab 0%, #d4af78 48%, #b9945c 100%);
+  box-shadow:
+    0 0 0 1px rgba(212, 175, 120, 0.4),
+    0 14px 40px -14px rgba(212, 175, 120, 0.45);
+}
+
+.hero-vip .btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, 0.55) 50%, transparent 62%);
+  transform: translateX(-130%);
+  transition: transform 0.9s var(--hv-ease);
+}
+
+.hero-vip .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 1px rgba(212, 175, 120, 0.7),
+    0 20px 50px -12px rgba(212, 175, 120, 0.55);
+}
+
+.hero-vip .btn-primary:hover::after {
+  transform: translateX(130%);
+}
+
+.hero-vip .btn-quiet {
+  color: rgba(245, 243, 238, 0.8);
+  border: 1px solid rgba(212, 175, 120, 0.3);
+  background: rgba(212, 175, 120, 0.02);
+}
+
+.hero-vip .btn-quiet:hover {
+  color: #f5f3ee;
+  border-color: rgba(212, 175, 120, 0.75);
+  background: rgba(212, 175, 120, 0.07);
+}
+
+/* ── Gilded Italic ─────────────────────────────────────────────── */
+.hero-gold-text {
+  background: linear-gradient(100deg, #f0ddb2 0%, #d4af78 38%, #a97f45 62%, #e8cf9e 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: hero-sheen 8s ease-in-out infinite alternate;
+}
+
+/* ── Living Layers & Animations ────────────────────────────────── */
+.hero-aurora-a {
+  background: radial-gradient(circle at 50% 50%, rgba(212, 175, 120, 0.12), transparent 65%);
+  animation: hero-drift-a 26s ease-in-out infinite alternate;
+}
+
+.hero-aurora-b {
+  background: radial-gradient(circle at 50% 50%, rgba(43, 64, 102, 0.2), transparent 65%);
+  animation: hero-drift-b 34s ease-in-out infinite alternate;
+}
+
+.hero-kenburns {
+  transform-origin: 62% 38%;
+  animation: hero-kenburns 26s ease-in-out infinite alternate;
+}
+
+.hero-float {
+  animation: hero-float 7s ease-in-out infinite alternate;
+}
+
+.hero-scroll-dot {
+  animation: hero-scroll-dot 2.4s var(--hv-ease) infinite;
+}
+
+.hero-pulse {
+  animation: hero-pulse 2.6s ease-out infinite;
+}
+
+.hero-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  animation: hero-grain 9s steps(10) infinite;
+}
+
+/* ── Keyframes ─────────────────────────────────────────────────── */
+@keyframes hero-sheen {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+
+@keyframes hero-kenburns {
+  from { transform: scale(1.08) translate3d(0, 0, 0); }
+  to { transform: scale(1.16) translate3d(-1.5%, 1.5%, 0); }
+}
+
+@keyframes hero-float {
+  from { transform: translateY(-4px); }
+  to { transform: translateY(5px); }
+}
+
+@keyframes hero-drift-a {
+  from { transform: translate3d(-2%, -1%, 0) scale(1); }
+  to { transform: translate3d(4%, 5%, 0) scale(1.15); }
+}
+
+@keyframes hero-drift-b {
+  from { transform: translate3d(2%, 3%, 0) scale(1.1); }
+  to { transform: translate3d(-4%, -4%, 0) scale(1); }
+}
+
+@keyframes hero-scroll-dot {
+  0% { transform: translateY(-120%); opacity: 0; }
+  25% { opacity: 1; }
+  100% { transform: translateY(320%); opacity: 0; }
+}
+
+@keyframes hero-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(143, 191, 138, 0.45); }
+  70% { box-shadow: 0 0 0 9px rgba(143, 191, 138, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(143, 191, 138, 0); }
+}
+
+@keyframes hero-grain {
+  0%, 100% { background-position: 0 0; }
+  10% { background-position: -4% -6%; }
+  20% { background-position: 6% 3%; }
+  30% { background-position: -3% 7%; }
+  40% { background-position: 7% -4%; }
+  50% { background-position: -6% 2%; }
+  60% { background-position: 4% 6%; }
+  70% { background-position: -2% -7%; }
+  80% { background-position: 6% -2%; }
+  90% { background-position: -5% 5%; }
+}
+
+/* ── Reduced Motion Fallback ───────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .hero-vip *,
+  .hero-vip *::before,
+  .hero-vip *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

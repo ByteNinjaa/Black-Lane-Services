@@ -1,0 +1,418 @@
+/* components/reserve.css
+   Scoped to .reserve-vip — global tokens elsewhere are untouched.
+   Shares the house palette and type; safe alongside every section sheet.
+   Fonts load via @import for drop-in use; promote to next/font in
+   app/layout.tsx for zero layout shift if preferred. */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:ital,wght@0,300;0,400;0,500;1,300&display=swap");
+
+:root {
+  --hv-ink: #060606;
+  --hv-coal: #0b0a08;
+  --hv-ivory: #f5f3ee;
+  --hv-gold: #d4af78;
+  --hv-gold-hi: #ead7ab;
+  --hv-gold-lo: #a97f45;
+  --hv-night: #2b4066;
+  --hv-jade: #8fbf8a;
+  --rs-error: #d98a7a;
+  --rs-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Page chrome, identical to the other section sheets (idempotent) */
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 175, 120, 0.45) #0a0908;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0908;
+  border-left: 1px solid rgba(212, 175, 120, 0.08);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(212, 175, 120, 0.55), rgba(169, 127, 69, 0.55));
+  border: 2px solid #0a0908;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(234, 215, 171, 0.8), rgba(212, 175, 120, 0.8));
+}
+::selection {
+  background: #d4af78;
+  color: #0b0a08;
+}
+
+/* ── Scope: the candlelit desk at the end of the evening ───────── */
+.reserve-vip {
+  font-family: "Jost", ui-sans-serif, system-ui, sans-serif;
+  background: linear-gradient(180deg, #0c0a06 0%, #090705 55%, #070503 100%);
+}
+.reserve-vip a {
+  -webkit-tap-highlight-color: transparent;
+}
+.reserve-vip :focus-visible {
+  outline: 1px solid #d4af78;
+}
+.reserve-vip a:focus-visible,
+.reserve-vip button:focus-visible {
+  outline-offset: 4px;
+}
+.rs-serif {
+  font-family: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+}
+
+/* Typography — the section's voice, guaranteed inside the scope */
+.reserve-vip .t-display {
+  font-family: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+.reserve-vip .t-display-xl {
+  font-size: clamp(2.9rem, 6vw, 6rem);
+  line-height: 1;
+}
+.reserve-vip .t-display-md {
+  font-size: clamp(1.9rem, 2.6vw, 2.5rem);
+  line-height: 1.05;
+}
+.reserve-vip .t-figure {
+  font-family: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+  font-weight: 300;
+  letter-spacing: 0;
+}
+.rs-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+/* ── Gilded italic ─────────────────────────────────────────────── */
+.rs-gold-text {
+  background: linear-gradient(100deg, #f0ddb2 0%, #d4af78 38%, #a97f45 62%, #e8cf9e 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rs-sheen 8s ease-in-out infinite alternate;
+}
+
+/* ── Watermark: the invitation ─────────────────────────────────── */
+.rs-ghost {
+  font-size: clamp(5rem, 11vw, 10rem);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: rgba(212, 175, 120, 0.03);
+  -webkit-text-stroke: 1px rgba(212, 175, 120, 0.12);
+}
+
+/* ── Atmosphere ────────────────────────────────────────────────── */
+.rs-glow-a {
+  background: radial-gradient(circle at 50% 50%, rgba(212, 175, 120, 0.09), transparent 65%);
+  animation: rs-glow-a 30s ease-in-out infinite alternate;
+}
+.rs-glow-b {
+  background: radial-gradient(circle at 50% 50%, rgba(224, 164, 88, 0.07), transparent 65%);
+  animation: rs-glow-b 38s ease-in-out infinite alternate;
+}
+.rs-bandglow {
+  background: radial-gradient(60% 50% at 75% 20%, rgba(63, 90, 138, 0.14), transparent 70%);
+  animation: rs-bandglow 32s ease-in-out infinite alternate;
+}
+.rs-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  animation: rs-grain 9s steps(10) infinite;
+}
+.rs-drift {
+  transform-origin: 50% 35%;
+  animation: rs-drift 26s ease-in-out infinite alternate;
+}
+
+/* ── Buttons: champagne sheen (magnetic wrappers live in the TSX) ── */
+.reserve-vip .btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 1.05rem 2.35rem;
+  font-family: "Jost", ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.6s var(--rs-ease),
+    box-shadow 0.6s var(--rs-ease),
+    color 0.4s ease,
+    border-color 0.4s ease,
+    background-color 0.4s ease,
+    opacity 0.4s ease;
+}
+.reserve-vip .btn:disabled {
+  cursor: wait;
+  opacity: 0.75;
+}
+.reserve-vip .btn-primary {
+  overflow: hidden;
+  color: #0b0a08;
+  background: linear-gradient(115deg, #ead7ab 0%, #d4af78 48%, #b9945c 100%);
+  box-shadow:
+    0 0 0 1px rgba(212, 175, 120, 0.4),
+    0 14px 40px -14px rgba(212, 175, 120, 0.45);
+}
+.reserve-vip .btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, 0.55) 50%, transparent 62%);
+  transform: translateX(-130%);
+  transition: transform 0.9s var(--rs-ease);
+}
+.reserve-vip .btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 1px rgba(212, 175, 120, 0.7),
+    0 20px 50px -12px rgba(212, 175, 120, 0.55);
+}
+.reserve-vip .btn-primary:hover:not(:disabled)::after {
+  transform: translateX(130%);
+}
+.reserve-vip .btn-quiet {
+  color: rgba(245, 243, 238, 0.8);
+  border: 1px solid rgba(212, 175, 120, 0.3);
+  background: rgba(212, 175, 120, 0.02);
+}
+.reserve-vip .btn-quiet:hover {
+  color: #f5f3ee;
+  border-color: rgba(212, 175, 120, 0.75);
+  background: rgba(212, 175, 120, 0.07);
+}
+
+/* ── Fields: hairlines, jade approval, coral correction ────────── */
+.rs-field[data-error="true"] .rs-line-base {
+  background: rgba(217, 138, 122, 0.65);
+}
+.rs-err {
+  animation: rs-err 0.35s var(--rs-ease) both;
+}
+
+/* ── Vehicle plates: the frame draws itself around the choice ──── */
+.rs-vehicle:has(input:focus-visible) {
+  outline: 1px solid #d4af78;
+  outline-offset: 3px;
+}
+.rs-vdrift {
+  transform-origin: 55% 45%;
+  animation: rs-vdrift 20s ease-in-out infinite alternate;
+}
+.rs-vline {
+  position: absolute;
+  transition: transform 0.5s var(--rs-ease);
+}
+.rs-vline-t {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 120, 0.7) 30%, rgba(212, 175, 120, 0.3));
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.rs-vline-r {
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(212, 175, 120, 0.6), rgba(212, 175, 120, 0.15));
+  transform: scaleY(0);
+  transform-origin: top;
+}
+.rs-vline-b {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(270deg, transparent, rgba(212, 175, 120, 0.55) 30%, rgba(212, 175, 120, 0.25));
+  transform: scaleX(0);
+  transform-origin: right;
+}
+.rs-vline-l {
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(0deg, rgba(212, 175, 120, 0.5), transparent);
+  transform: scaleY(0);
+  transform-origin: bottom;
+}
+.rs-vehicle[data-selected="true"] .rs-vline-t { transform: scaleX(1); transition-duration: 0.8s; transition-delay: 0.05s; }
+.rs-vehicle[data-selected="true"] .rs-vline-r { transform: scaleY(1); transition-duration: 0.8s; transition-delay: 0.15s; }
+.rs-vehicle[data-selected="true"] .rs-vline-b { transform: scaleX(1); transition-duration: 0.8s; transition-delay: 0.25s; }
+.rs-vehicle[data-selected="true"] .rs-vline-l { transform: scaleY(1); transition-duration: 0.8s; transition-delay: 0.35s; }
+
+.rs-vcorner {
+  position: absolute;
+  width: 1.25rem;
+  height: 1.25rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.rs-vcorner-tl {
+  top: -1px;
+  left: -1px;
+  border-top: 1px solid #d4af78;
+  border-left: 1px solid #d4af78;
+}
+.rs-vcorner-br {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 1px solid #d4af78;
+  border-right: 1px solid #d4af78;
+}
+.rs-vehicle[data-selected="true"] .rs-vcorner {
+  opacity: 1;
+  transition-delay: 0.35s;
+}
+.rs-vdiamond {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 7px;
+  height: 7px;
+  border: 1px solid #d4af78;
+  background: #0b0a08;
+  transform: rotate(45deg) scale(0);
+  transition: transform 0.45s var(--rs-ease);
+}
+.rs-vehicle[data-selected="true"] .rs-vdiamond {
+  transform: rotate(45deg) scale(1);
+  transition-delay: 0.45s;
+}
+.rs-vghost {
+  font-size: 2.6rem;
+  font-weight: 300;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(212, 175, 120, 0.3);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.5s ease, transform 0.6s var(--rs-ease);
+}
+.rs-vehicle[data-selected="true"] .rs-vghost {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.2s;
+}
+
+/* ── Steps, numerals, seals ────────────────────────────────────── */
+.rs-step[data-active="true"] {
+  animation: rs-enter 0.7s var(--rs-ease) both;
+}
+.rs-pop {
+  animation: rs-pop 0.45s var(--rs-ease) both;
+}
+.rs-seal {
+  animation: rs-seal 3s ease-in-out infinite;
+}
+.rs-sent {
+  animation: rs-enter 0.8s var(--rs-ease) both;
+}
+.rs-link {
+  position: relative;
+}
+.rs-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, #d4af78, rgba(212, 175, 120, 0.2));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s var(--rs-ease);
+}
+.rs-link:hover::after,
+.rs-link:focus-visible::after {
+  transform: scaleX(1);
+}
+.rs-pulse {
+  animation: rs-pulse 2.6s ease-out infinite;
+}
+
+/* ── Keyframes ─────────────────────────────────────────────────── */
+@keyframes rs-sheen {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+@keyframes rs-glow-a {
+  from { transform: translate3d(-2%, -2%, 0) scale(1); }
+  to { transform: translate3d(4%, 3%, 0) scale(1.12); }
+}
+@keyframes rs-glow-b {
+  from { transform: translate3d(2%, 2%, 0) scale(1.08); }
+  to { transform: translate3d(-3%, -3%, 0) scale(1); }
+}
+@keyframes rs-bandglow {
+  from { transform: translate3d(1.5%, -1%, 0) scale(1); }
+  to { transform: translate3d(-2%, 2%, 0) scale(1.08); }
+}
+@keyframes rs-grain {
+  0%, 100% { background-position: 0 0; }
+  10% { background-position: -4% -6%; }
+  20% { background-position: 6% 3%; }
+  30% { background-position: -3% 7%; }
+  40% { background-position: 7% -4%; }
+  50% { background-position: -6% 2%; }
+  60% { background-position: 4% 6%; }
+  70% { background-position: -2% -7%; }
+  80% { background-position: 6% -2%; }
+  90% { background-position: -5% 5%; }
+}
+@keyframes rs-drift {
+  from { transform: scale(1.05); }
+  to { transform: scale(1.12) translate3d(-1%, 1%, 0); }
+}
+@keyframes rs-vdrift {
+  from { transform: scale(1.03); }
+  to { transform: scale(1.09) translate3d(-1%, 1%, 0); }
+}
+@keyframes rs-enter {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes rs-pop {
+  from { opacity: 0; transform: scale(0.82); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes rs-err {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes rs-seal {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 120, 0.25); }
+  50% { box-shadow: 0 0 0 12px rgba(212, 175, 120, 0); }
+}
+@keyframes rs-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(143, 191, 138, 0.45); }
+  70% { box-shadow: 0 0 0 9px rgba(143, 191, 138, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(143, 191, 138, 0); }
+}
+
+/* ── Reduced motion: the desk holds still ──────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reserve-vip *,
+  .reserve-vip *::before,
+  .reserve-vip *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
