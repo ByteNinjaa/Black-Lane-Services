@@ -27,7 +27,7 @@ const OCCASIONS = [
 ] as const;
 
 export function Fleet() {
-  const [active, setActive] = useState<VehicleId>("escalade");
+  const [active, setActive] = useState<VehicleId>("suburban");
   const shouldReduceMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -75,8 +75,8 @@ export function Fleet() {
 
           <Reveal delay={0.1} className="lg:pb-2">
             <p className="t-lead border-l border-[#D4AF78]/25 pl-6 text-[#F5F3EE]/70">
-                Pristine vehicles. Meticulously detailed before every departure to guarantee absolute perfection.            
-              </p>
+              Pristine vehicles. Meticulously detailed before every departure to guarantee absolute perfection.            
+            </p>
             <p className="fl-label mt-6 flex flex-wrap items-center gap-3 pl-6 text-[#F5F3EE]/50">
               All-inclusive <Diamond /> Chauffeur-driven <Diamond /> Uncompromising
             </p>

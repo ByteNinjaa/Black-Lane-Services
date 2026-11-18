@@ -1,7 +1,7 @@
 // Rates are ESTIMATES for the landing page.
 // Replace with the company's real rate card before launch.
 
-export type VehicleId = "escalade" | "suburban";
+export type VehicleId = "suburban";
 export type Vehicle = {
   id: VehicleId;
   name: string;
@@ -12,15 +12,7 @@ export type Vehicle = {
 };
 
 export const fleet: Vehicle[] = [
-{
-    id: "escalade",
-    name: "Cadillac Escalade",
-    passengers: 6,
-    image: "/images/fleet-escalade.jpg",
-    alt: "Black Cadillac Escalade SUV parked in front of a luxury Manhattan hotel",
-    note: "Unmatched SUV presence. Exceptional legroom, discreet privacy glass, and effortless power for airport transfers and executive city travel.",
-  },
-{
+  {
     id: "suburban",
     name: "Chevrolet Suburban",
     passengers: 6,
