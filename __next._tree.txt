@@ -4,4 +4,4 @@
 :HL["/Black-Lane-Services/_next/static/media/c8e7f96418209c97-s.p.1wv9adx67v-8j.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/Black-Lane-Services/_next/static/media/cf5b2354989b46f0-s.p.2kq9x7m5memd4.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/Black-Lane-Services/_next/static/chunks/2a5hdrtn7polk.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}},"staleTime":300,"buildId":"iFxat56q30ImH3TPoMf7t"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}},"staleTime":300,"buildId":"GGz481GhrmzyhhdtR8DmA"}
