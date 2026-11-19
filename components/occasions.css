@@ -36,7 +36,7 @@ html {
 }
 
 .occasions-vip .t-display-lg {
-  font-size: clamp(2.75rem, 5.5vw, 5.25rem);
+  font-size: clamp(2rem, 3.8vw, 3.5rem); /* Down from clamp(2.75rem, 5.5vw, 5.25rem) */
   line-height: 1.02;
 }
 

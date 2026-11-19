@@ -17,8 +17,8 @@ export const fleet: Vehicle[] = [
     name: "Chevrolet Suburban",
     passengers: 6,
     image: "/images/fleet-suburban.jpg",
-    alt: "Black Chevrolet Suburban luxury SUV parked outside a New York City private aviation terminal",
-    note: "The industry standard for executive transport. Massive luggage capacity, refined leather interior, and supreme highway stability.",
+    alt: "Black Chevrolet Suburban",
+    note: "Big on space, comfort, and style. The Chevrolet Suburban makes every journey feel special."
   },
 ];
 

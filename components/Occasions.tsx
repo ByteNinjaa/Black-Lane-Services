@@ -28,50 +28,50 @@ const tiles: Tile[] = [
   {
     id: "weddings",
     title: "Weddings & Ceremonies",
-    body: "The couple, the family, and the wedding party—arriving in synchronized elegance with a dedicated reserve limousine waiting on standby.",
+    body: "Make your special day even more memorable with a comfortable, stylish ride for you and your loved ones.",
     image: "/images/occ-weddings.jpg",
     alt: "A bride and groom raising glasses under a limousine's starlight ceiling",
     width: 1300,
     height: 1598,
-    kicker: "The Sacred Union",
+    kicker: "Your Special Day",
     tint: "#C99A8E",
-    caption: "Flawless coordination for life's rare milestones",
+    caption: "Arrive in style on your wedding day",
   },
   {
     id: "airport",
     title: "Airport Transfers & Aviation",
-    body: "Seamless coordination and flight-tracked arrivals, ensuring your transition from cabin to terminal is impeccably effortless.",
+    body: "Skip the hassle of getting to and from the airport. Sit back, relax, and let us take care of the ride.",
     image: "/images/occ-airport.jpg",
     alt: "An executive limousine waiting on the tarmac beside a private jet",
     width: 1300,
     height: 1598,
-    kicker: "Private Aviation",
+    kicker: "Your Journey Starts Here",
     tint: "#8EA8C9",
-    caption: "Punctuality and discretion at every major aviation hub",
+    caption: "Reliable rides to and from the airport",
   },
   {
     id: "business",
-    title: "Executive & Corporate",
-    body: "High-stakes roadshows, discreet client transits, and late departures handled with absolute confidentiality and precision.",
+    title: "Business & Corporate",
+    body: "Get to meetings, events, and business appointments comfortably and on time. Enjoy a smooth ride while we take care of the road.",
     image: "/images/occ-business.jpg",
     alt: "A businesswoman on a call in the leather rear seat of a chauffeured car",
     width: 1400,
     height: 875,
-    kicker: "The Boardroom",
+    kicker: "Business Travel",
     tint: "#8FA6C4",
-    caption: "Uninterrupted focus between engagements",
+    caption: "Professional rides for your busy schedule",
   },
   {
     id: "nights",
     title: "Private Soirées",
-    body: "Gala openings, private dining, and after-hours city escapes with a fully provisioned cabin at your command.",
+    body: "From dinner dates to birthday celebrations, enjoy the night without worrying about the ride. Sit back, relax, and have fun.",
     image: "/images/occ-nights.jpg",
     alt: "Inside a stretch limousine: leather bench seating, a lit bar and a starlight ceiling",
     width: 1400,
     height: 875,
-    kicker: "The After-Hours",
+    kicker: "Your Night, Your Way",
     tint: "#E0A458",
-    caption: "The city unlocked for the discerning few",
+    caption: "Good nights start with a great ride",
   },
 ];
 
@@ -217,18 +217,18 @@ export function Occasions() {
               id="occasions-title"
               className="t-display t-display-lg mt-6 text-[#F5F3EE]"
             >
-              Designed for life&rsquo;s
+              From everyday plans,
               <br />
-              <em className="oc-gold-text italic">rarest moments.</em>
+              <em className="oc-gold-text italic">to unforgettable nights.</em>
             </h2>
           </Reveal>
 
           <Reveal delay={0.1} className="lg:pb-2">
             <p className="t-lead border-l border-[#D4AF78]/25 pl-6 text-[#F5F3EE]/70">
-              Name the occasion. We curate the entire experience — the vehicle, the schedule, and the quiet refinements that make your arrival undeniable.
+              From dinner dates to special celebrations, enjoy a comfortable ride, professional service, and a stylish arrival every time.
             </p>
             <p className="oc-label mt-6 flex flex-wrap items-center gap-3 pl-6 text-[#F5F3EE]/50">
-              Dedicated Chauffeur <Diamond /> Flawless Itinerary <Diamond /> Absolute Discretion
+              Professional Chauffeurs <Diamond /> Comfort & Style <Diamond /> Great Value
             </p>
           </Reveal>
         </div>

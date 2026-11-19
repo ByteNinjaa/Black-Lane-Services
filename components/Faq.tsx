@@ -18,28 +18,29 @@ const faqs = [
   {
     id: "booking",
     tag: "Reservations",
-    q: "How far in advance should I secure my evening?",
-    a: "For weddings, galas, and key milestones, we advise reserving well in advance. For other bespoke evenings, a minimum of 48 hours ensures flawless coordination.",
+    q: "How far in advance should I book?",
+    a: "We recommend booking as early as possible, especially for weddings, special events, and busy dates. For regular rides, 48 hours' notice is preferred. Last-minute requests are always welcome, subject to availability.",
   },
   {
     id: "inclusions",
-    tag: "Inclusions",
-    q: "What standards are included with every booking?",
-    a: "Your dedicated uniformed chauffeur and pristine cabin preparation. All tolls and gratuities are itemized with complete transparency.",
+    tag: "What's Included",
+    q: "What's included with my reservation?",
+    a: "Every booking includes a professional chauffeur and a clean, comfortable vehicle. Any additional costs, such as tolls and gratuities, will be clearly explained so you know what to expect.",
   },
   {
     id: "minimums",
-    tag: "Duration",
-    q: "What are the minimum reservation windows?",
-    a: "A 3-hour minimum is required for our standard executive limousines, and 4 hours for our premier SUV limousines to ensure unhurried service.",
+    tag: "Booking Duration",
+    q: "Is there a minimum booking time?",
+    a: "Yes. Our standard limousine service has a 3-hour minimum, while SUV reservations require a 4-hour minimum.",
   },
   {
     id: "cancellation",
-    tag: "Flexibility",
-    q: "What is the policy for itinerary adjustments?",
-    a: "We offer complimentary modifications and cancellations up to 72 hours prior to your scheduled departure, accommodating the fluid nature of elite schedules.",
+    tag: "Changes & Cancellations",
+    q: "Can I change or cancel my reservation?",
+    a: "Yes. You can make changes or cancel your reservation up to 72 hours before your scheduled pickup. Please contact us and we'll be happy to help.",
   },
 ];
+
 
 /* ── Live New York time — the desk against which questions are asked ── */
 function useNyTime() {
@@ -210,26 +211,26 @@ export function Faq() {
           </motion.div>
 
           {/* Heading + standfirst, laid over the dark lower part */}
-          <div className="relative z-10 flex w-full flex-col gap-8 p-8 sm:flex-row sm:items-end sm:justify-between sm:p-12">
-            <div>
-              <div className="mb-6 flex items-center gap-4">
-                <span className="h-px w-12 bg-gradient-to-r from-[#D4AF78] to-[#D4AF78]/20" />
-                <span className="text-[0.72rem] uppercase tracking-[0.34em] text-[#D4AF78]">
-                  Client Guidance
-                </span>
-              </div>
+<div className="relative z-10 flex w-full flex-col gap-8 p-8 sm:flex-row sm:items-end sm:justify-between sm:p-12">
+  <div>
+    <div className="mb-6 flex items-center gap-4">
+      <span className="h-px w-12 bg-gradient-to-r from-[#D4AF78] to-[#D4AF78]/20" />
+      <span className="text-[0.72rem] uppercase tracking-[0.34em] text-[#D4AF78]">
+        Good to Know
+      </span>
+    </div>
 
-              <h2 id="faq-title" className="t-display t-display-lg text-[#F5F3EE]">
-                Inquiries,
-                <br className="hidden sm:block" />
-                <em className="fq-gold-text italic"> answered.</em>
-              </h2>
-            </div>
+    <h2 id="faq-title" className="t-display t-display-lg text-[#F5F3EE]">
+      Your questions,
+      <br className="hidden sm:block" />
+      <em className="fq-gold-text italic"> answered.</em>
+    </h2>
+  </div>
 
-            <p className="max-w-[26rem] border-l border-[#D4AF78]/25 pl-6 text-[0.95rem] leading-[1.8] text-[#F5F3EE]/70">
-              The protocols of the house, articulated with absolute clarity. For any bespoke requirements, our concierge is at your disposal 24/7.
-            </p>
-          </div>
+  <p className="max-w-[26rem] border-l border-[#D4AF78]/25 pl-6 text-[0.95rem] leading-[1.8] text-[#F5F3EE]/70">
+    Everything you need to know before your ride. From booking and pricing to special requests, we're here to make every step simple.
+  </p>
+</div>
         </Reveal>
 
         {/* ── EDITORIAL Q&A: engraved plates, all answers in the open ── */}

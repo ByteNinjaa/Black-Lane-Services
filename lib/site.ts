@@ -2,13 +2,13 @@
 export const site = {
   name: "Black Lane Services",
   // PLACEHOLDER phone number
-  phoneDisplay: "(212) 000-0000",
-  phoneHref: "tel:+12120000000",
+  phoneDisplay: "(646) 257-9277",
+  phoneHref: "tel:+16462579277",
   // PLACEHOLDER email
   email: "reservations@sovereignlimo.example",
   // PLACEHOLDER address
   addressLine1: "000 Park Avenue",
-  addressLine2: "New York, NY 10000",
+  addressLine2: "New Jersey, NJ 10000",
   hours: "Dispatch open 24 hours, 7 days",
 };
 

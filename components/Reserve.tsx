@@ -398,7 +398,7 @@ export function Reserve() {
         <motion.div className="pointer-events-none absolute right-[0.8rem] top-1/2 z-[5] hidden -translate-y-1/2 flex-col items-center gap-3 lg:flex" {...appear(1.1)}>
           <span aria-hidden="true" className="h-8 w-px bg-[#D4AF78]/30" />
           <span className="text-[0.6rem] uppercase tracking-[0.3em] text-[#D4AF78]/65 [writing-mode:vertical-rl]">
-            The Concierge Desk
+            Book Your Ride
           </span>
           <span aria-hidden="true" className="h-8 w-px bg-[#D4AF78]/30" />
         </motion.div>
@@ -407,14 +407,14 @@ export function Reserve() {
           <div>
             <div className="mb-6 flex items-center gap-4">
               <span className="h-px w-12 bg-gradient-to-r from-[#D4AF78] to-[#D4AF78]/20" />
-              <span className="text-[0.72rem] uppercase tracking-[0.34em] text-[#D4AF78]">The Concierge</span>
+              <span className="text-[0.72rem] uppercase tracking-[0.34em] text-[#D4AF78]">Book Your Ride</span>
             </div>
             <h2 id="reserve-title" className="t-display t-display-xl max-w-[48rem] text-[#F5F3EE]">
                 Your VIP experience <br className="hidden sm:block" /><em className="rs-gold-text italic">awaits.</em>
             </h2>
           </div>
           <p className="max-w-[20rem] border-l border-[#D4AF78]/25 pl-6 text-[0.95rem] leading-[1.8] text-[#F5F3EE]/70">
-            Two steps. A quarter-hour. The evening is yours.
+              Let's get you there in style.
           </p>
         </div>
       </div>
@@ -425,7 +425,7 @@ export function Reserve() {
           {/* ── LEFT: the concierge, at your elbow ──────────────── */}
           <div className="lg:col-span-4 lg:sticky lg:top-32 lg:self-start">
             <p className="text-[1.125rem] font-light leading-relaxed text-[#F5F3EE]/80">
-              Allow us to arrange the details. Dispatch will confirm your chauffeur and bespoke itinerary via email.
+              Leave the details to us. We'll confirm your ride by email.
             </p>
 
             <div className="mt-12 border-t border-[#D4AF78]/20 pt-8">
@@ -444,7 +444,7 @@ export function Reserve() {
               <ol className="mt-6 space-y-5">
                 {[
                   "Send the request — no payment details needed.",
-                  "Dispatch replies by email, typically within 15 minutes.",
+                  "Dispatch replies by email.",
                   "Approve the all-inclusive fare; the car is yours.",
                 ].map((line, i) => (
                   <li key={line} className="flex items-start gap-4">
@@ -629,8 +629,8 @@ export function Reserve() {
 
                       <LuxuryInput label="Date of journey" name="date" type="date" min={minDate} error={errors.date} />
                       <LuxuryInput label="Preferred pickup time" name="time" type="time" error={errors.time} />
-                      <LuxuryInput label="Where shall we collect you?" name="pickup" placeholder="e.g., The Plaza, 768 5th Ave" error={errors.pickup} />
-                      <LuxuryInput label="Your destination" name="dropoff" placeholder="e.g., Cipriani Wall Street" error={errors.dropoff} />
+                      <LuxuryInput label="Pickup Location" name="pickup" placeholder="e.g., The Plaza, 768 5th Ave" error={errors.pickup} />
+                      <LuxuryInput label="Destination" name="dropoff" placeholder="e.g., Cipriani Wall Street" error={errors.dropoff} />
                     </div>
                   </div>
                   <div className="flex flex-wrap items-center gap-6 pt-4">
@@ -670,7 +670,7 @@ export function Reserve() {
                           className="rs-label group/edit inline-flex items-center gap-2 text-[#D4AF78] transition-colors duration-300 hover:text-[#E4C491]"
                         >
                           <ArrowLeft size={14} className="transition-transform duration-500 group-hover/edit:-translate-x-1" aria-hidden="true" />
-                          Modify journey
+                          Modify trip
                         </button>
                       </div>
 
@@ -681,7 +681,7 @@ export function Reserve() {
                   )}
 
                   <div className="space-y-8">
-                    <p className="rs-label text-[#D4AF78]/70">Contact & Confirmation</p>
+                    <p className="rs-label text-[#D4AF78]/70">Contact Information</p>
                     <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2">
                       <LuxuryInput label="Full Name" name="name" placeholder="e.g., Alexander Wright" autoComplete="name" error={errors.name} />
                       <LuxuryInput label="Mobile Phone" name="phone" type="tel" placeholder="e.g., +1 (555) 019-2834" autoComplete="tel" inputMode="tel" error={errors.phone} />
@@ -691,8 +691,8 @@ export function Reserve() {
                       <div className="sm:col-span-2">
                         <div className="rs-field group relative">
                           <label htmlFor="notes" className="rs-label mb-3 block text-[#D4AF78]/70">
-                            Bespoke Requirements (Optional)
-                          </label>
+                              Additional Requests (Optional)                          ]
+                            </label>
                           <textarea
                             id="notes"
                             name="notes"

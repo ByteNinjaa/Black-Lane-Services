@@ -85,16 +85,17 @@ export function Hero() {
             id="hero-title"
             className="hero-serif relative z-20 mt-9 text-[clamp(2.25rem,8vw,4rem)] font-light leading-[0.98] tracking-[-0.015em] text-[#F5F3EE] lg:whitespace-nowrap lg:text-[clamp(3rem,6.5vw,7.5rem)]"
           >
-            <span className="block">Private limousines</span>
-            <span className="block">for New York&rsquo;s</span>
+            <span className="block">Luxury rides.</span>
             <span className="block">
-              <em className="hero-gold-text pr-[0.04em] font-normal italic">finest</em> nights.
+              <em className="hero-gold-text pr-[0.04em] font-normal italic">
+                Without the luxury price.
+              </em>
             </span>
           </h1>
 
           {/* Subhead */}
           <p className="mt-8 max-w-[27rem] text-[1.0625rem] leading-[1.8] text-[#F5F3EE]/70">
-            Uniformed chauffeurs. Immaculate late-model fleet. All-inclusive quotes — for the city&rsquo;s most discerning travellers.
+            Professional chauffeurs. Luxury vehicles. Affordable prices. Enjoy a first-class ride without the first-class price.
           </p>
 
           {/* CTAs */}
@@ -145,7 +146,7 @@ export function Hero() {
         <div className="absolute right-[1.1rem] top-1/2 z-30 flex -translate-y-1/2 flex-col items-center gap-4">
           <span aria-hidden="true" className="h-10 w-px bg-[#D4AF78]/30" />
           <span className="text-[0.62rem] uppercase tracking-[0.34em] text-[#D4AF78]/70 [writing-mode:vertical-rl]">
-            Nº 01 — The Fleet
+              Nº 01 — The VIP Experience          
           </span>
           <span aria-hidden="true" className="h-10 w-px bg-[#D4AF78]/30" />
         </div>

@@ -118,7 +118,7 @@ export function Footer() {
               </span>
             </div>
             <p className="max-w-[22rem] text-[1rem] font-light leading-relaxed text-[#F5F3EE]/80">
-              Private chauffeured limousine service for New York City and the surrounding enclaves. By appointment only.
+              Private chauffeured limousine service for Tri State Area. By appointment only.
             </p>
             <p className="ft-label mt-8 flex items-center gap-3 text-[#F5F3EE]/45">
               <Diamond /> Est. 2026 <Diamond />
@@ -239,7 +239,7 @@ export function Footer() {
               <Wordmark />
             </div>
             <p className="ft-label mt-8 flex items-center justify-center gap-3 text-[#F5F3EE]/45">
-              <Diamond /> VIPF Chauffeurs <Diamond /> 
+              <Diamond />  Affordable Prices <Diamond /> 
             </p>
           </motion.div>
         </Reveal>

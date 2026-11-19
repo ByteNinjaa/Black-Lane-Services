@@ -60,25 +60,25 @@ export function Fleet() {
             <div className="flex items-center gap-4">
               <span className="h-px w-12 bg-gradient-to-r from-[#D4AF78] to-[#D4AF78]/20" />
               <span className="text-[0.72rem] uppercase tracking-[0.34em] text-[#D4AF78]">
-                The Sanctuary Fleet
+                The Fleet
               </span>
             </div>
             <h2
               id="fleet-title"
               className="t-display t-display-lg mt-6 text-[#F5F3EE]"
             >
-              An immaculate fleet,
+              Travel in comfort,
               <br />
-              <em className="fl-gold-text italic">curated for the VIP.</em>
+              <em className="fl-gold-text italic">arrive in style.</em>
             </h2>
           </Reveal>
 
           <Reveal delay={0.1} className="lg:pb-2">
             <p className="t-lead border-l border-[#D4AF78]/25 pl-6 text-[#F5F3EE]/70">
-              Pristine vehicles. Meticulously detailed before every departure to guarantee absolute perfection.            
+              Clean, comfortable vehicles and professional chauffeurs. Everything you need for a smooth, stylish ride at a price you'll love.
             </p>
             <p className="fl-label mt-6 flex flex-wrap items-center gap-3 pl-6 text-[#F5F3EE]/50">
-              All-inclusive <Diamond /> Chauffeur-driven <Diamond /> Uncompromising
+              Luxury Vehicles <Diamond /> Professional Chauffeurs <Diamond /> Great Value
             </p>
           </Reveal>
         </div>

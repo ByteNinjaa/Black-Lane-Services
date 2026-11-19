@@ -15,9 +15,18 @@ import "./chauffeur.css"; // App Router: import here. Pages Router: move this im
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const standards = [
-  { title: "Rigorously Vetted", body: "TLC-licensed, background-checked, and trained in executive protection and protocol." },
-  { title: "Absolute Discretion", body: "Complete confidentiality by default; conversation tailored entirely to your preference." },
-  { title: "Curated Sanctuary", body: "Your cabin prepared precisely to your liking—temperature, lighting, and amenities set before you open the door." },
+  {
+    title: "Professional & Trusted",
+    body: "TLC-licensed, background-checked chauffeurs committed to your safety, comfort, and a great experience.",
+  },
+  {
+    title: "Respectful & Discreet",
+    body: "Enjoy a private, comfortable ride with friendly service and respect for your personal space.",
+  },
+  {
+    title: "Comfort Comes First",
+    body: "A clean, well-kept cabin and thoughtful details help make every ride relaxing from start to finish.",
+  },
 ];
 
 /* ── Live New York time — the dispatch desk never closes ─────────── */
@@ -163,7 +172,7 @@ export function Chauffeur() {
             <div className="mb-6 flex items-center gap-4">
               <span className="h-px w-12 bg-gradient-to-r from-[#D4AF78] to-[#D4AF78]/20" />
               <span className="text-[0.72rem] uppercase tracking-[0.34em] text-[#D4AF78]">
-                The Private Chauffeur Standard
+                Your Ride, Our Priority
               </span>
             </div>
 
@@ -171,9 +180,9 @@ export function Chauffeur() {
               id="chauffeur-title"
               className="t-display t-display-xl max-w-[14ch] text-[#F5F3EE]"
             >
-              The <em className="ch-gold-text italic">chauffeur</em>
+              Sit back.
               <br />
-              defines the evening.
+              <em className="ch-gold-text italic">We'll take it from here.</em>
             </h2>
           </Reveal>
 
